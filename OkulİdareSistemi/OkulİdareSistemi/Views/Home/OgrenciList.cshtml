@@ -1,0 +1,84 @@
+﻿@model IEnumerable<OkulİdareSistemi.Models.Ogrenci>
+@{
+    Layout = "~/Views/Shared/Sidebar.cshtml";
+}
+<a href="@Url.Action("OgrenciAdd","Home")" class="btn px-15 btn-primary">
+    <i></i>Yeni Öğrenci Ekle
+</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                <span>ÖğrenciId</span>
+            </th>
+            <th>
+                <span>Öğrenci No</span>
+            </th>
+            <th>
+                <span>Adı Soyadı</span>
+            </th>
+            <th>
+                <span>Bölümü</span>
+            </th>
+            <th>
+                <span>Action</span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            foreach (var ogrenci in Model)
+            {
+                <tr>
+                    <td>
+                        <div>
+                            @ogrenci.OgrenciId
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            @ogrenci.OgrenciNo
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            @ogrenci.AdSoyad
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            @ogrenci.Bolum
+                        </div>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("OgrenciEdit","Home", new {  id=ogrenci.OgrenciId  })">
+                                    <span data-feather="edit"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("OgrenciRemove","Home", new {  id=ogrenci.OgrenciId  })" class="remove">
+                                    <span data-feather="trash-2"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">&nbsp;</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button>@Html.ActionLink("Guncelle", "OgrenciList", "Home", new { area = "A" }, null)</button>
+<br />
+<button>@Html.ActionLink("Anasayfa", "Index", "Home", new { area = "A" }, null)</button>
+<br />
+

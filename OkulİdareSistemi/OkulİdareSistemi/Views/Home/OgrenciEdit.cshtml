@@ -1,0 +1,91 @@
+﻿@model OkulİdareSistemi.Models.Ogrenci
+@{
+    Layout = "~/Views/Shared/Sidebar.cshtml";
+}
+
+@using (Html.BeginForm("OgrenciEdit", "Home", FormMethod.Post))
+{
+    <div>
+        <div>
+            <div>
+                <h3><b>ÖĞRENCİ GÜNCELLEME</b></h3>
+            </div>
+            <div>
+                <div>
+                    <form action="#">
+                        <div>
+                            <h3>@ViewBag.Message</h3>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="inputEmailIcon" class=" col-form-label color-dark fs-14 fw-500 align-center">
+                                    Adı Soyadı
+                                </label>
+                            </div>
+                            <div>
+                                <div>
+                                    @Html.EditorFor(model => model.AdSoyad, new { htmlAttributes = new { @class = "form-control  ih-medium ip-gray radius-xs b-light", id = "inputEmailIcon", placeholder = "adı soyadı" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="inputEmailIcon">
+                                    Kayıt Tarihi
+                                </label>
+                            </div>
+                            <div>
+                                <div>
+                                    @Html.EditorFor(model => model.KayitTarihi, new { htmlAttributes = new { @class = "form-control  ih-medium ip-gray radius-xs b-light", id = "inputEmailIcon", placeholder = "gg/aa/yyyy" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="inputEmailIcon" class=" col-form-label color-dark fs-14 fw-500 align-center">
+                                    Öğrenci No
+                                </label>
+                            </div>
+                            <div>
+                                <div>
+                                    @Html.EditorFor(model => model.OgrenciNo, new { htmlAttributes = new { @class = "form-control  ih-medium ip-gray radius-xs b-light", id = "inputEmailIcon", placeholder = "öğrenci no" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="inputEmailIcon">
+                                    Doğum Tarihi
+                                </label>
+                            </div>
+                            <div>
+                                <div>
+                                    @Html.EditorFor(model => model.DogumTarihi, new { htmlAttributes = new { @class = "form-control  ih-medium ip-gray radius-xs b-light", id = "inputEmailIcon", placeholder = "gg/aa/yyyy" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="inputEmailIcon">
+                                    Bölümü
+                                </label>
+                            </div>
+                            <div>
+                                <div>
+                                    @Html.EditorFor(model => model.Bolum, new { htmlAttributes = new { @class = "form-control  ih-medium ip-gray radius-xs b-light", id = "sinif", placeholder = "bölümü" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="submit" value="Ekle" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button>@Html.ActionLink("Anasayfa", "Index", "Home", new { area = "A" }, null)</button>
+    <br />
+}
+
+

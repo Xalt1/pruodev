@@ -1,0 +1,90 @@
+﻿@model IEnumerable<OkulİdareSistemi.Models.Ders>
+@{
+    Layout = "~/Views/Shared/Sidebar.cshtml";
+}
+<a href="@Url.Action("DersAdd","Home")" class="btn px-15 btn-primary">
+    <i></i>Yeni Ders Ekle
+</a>
+<div>
+    <div>
+        <div>
+            <div>
+                <div></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <span>DersId</span>
+                            </th>
+                            <th>
+                                <span>DersAdi</span>
+                            </th>
+                            <th>
+                                <span>Kredisi</span>
+                            </th>
+                            <th>
+                                <span>Öğretmeni</span>
+                            </th>
+                            <th>
+                                <span>Action</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count() > 0)
+                        {
+                            foreach (var ders in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <div>
+                                            @ders.DersId
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            @ders.DersAdi
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            @ders.Kredisi
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            @ders.OkulYonetim.AdSoyad
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <a href="@Url.Action("DersEdit","Home", new {  id=ders.DersId  })" class="edit">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("DersRemove","Home", new {  id=ders.DersId  })" class="remove">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3">&nbsp;</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<button>@Html.ActionLink("Anasayfa", "Index", "Home", new { area = "A" }, null)</button>
+<button>@Html.ActionLink("Guncelle", "DersEdit", "Home", new { area = "A" }, null)</button>
+<br />
